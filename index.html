@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaleHub - Fashion & Clothing Shopify</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-800 antialiased pb-16 md:pb-0">
+
+    <!-- 1. HEADER & NAVIGATION -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            
+            <!-- Nút mở Menu Ba Gạch (Chỉ hiện trên Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden text-xl text-gray-700 p-1 mr-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Menu cũ máy tính: Ẩn trên mobile để hết lỗi tràn chữ -->
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-600">
+                <a href="#" class="hover:text-black">Home</a>
+                <a href="#" class="hover:text-black">Pages</a>
+                <a href="#" class="hover:text-black">Women</a>
+                <a href="#" class="hover:text-black">Men</a>
+                <a href="#" class="hover:text-black">Blog</a>
+            </div>
+            
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold tracking-tight text-black mx-auto md:mx-0">Salehub</a>
+
+            <!-- Tiện ích bên phải -->
+            <div class="flex items-center space-x-4 text-gray-700">
+                
+                <!-- NÚT SEARCH GIỮ NGUYÊN GIAO DIỆN CŨ NHƯNG BẤM VÀO SẼ MỞ Ô TÌM KIẾM -->
+                <div id="search-wrapper" class="flex items-center space-x-1 cursor-pointer transition-all duration-300">
+                    <button id="search-trigger-btn" class="hover:text-black text-sm font-medium flex items-center space-x-1 focus:outline-none">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        <span id="search-text-label" class="hidden md:inline">Search</span>
+                    </button>
+                    <!-- Ô input ẩn, chỉ xuất hiện khi bấm vào nút Search -->
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="Type to search..." 
+                        class="w-0 opacity-0 bg-gray-100 text-xs px-0 py-1 rounded-full focus:outline-none transition-all duration-300"
+                    >
+                </div>
+
+                <a href="#" class="hidden sm:inline-block hover:text-black text-sm font-medium">Account</a>
+            
+                <a href="#" class="hover:text-black relative flex items-center space-x-1">
+                    <span class="hidden sm:inline-block text-sm font-medium">My Cart</span>
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="bg-black text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu Ẩn Side-Drawer Cho Mobile -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-black/50 z-50 pointer-events-none opacity-0 transition-opacity duration-300 md:hidden">
+        <div id="drawer-content" class="w-72 bg-white h-full p-6 space-y-6 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between">
+            <div class="space-y-6">
+                <div class="flex justify-between items-center border-b pb-4">
+                    <span class="text-xl font-bold">Menu</span>
+                    <button id="close-drawer-btn" class="text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <nav class="flex flex-col space-y-4 font-medium text-base text-gray-800">
+                    <a href="#" class="py-1">Home</a>
+                    <a href="#" class="py-1">Pages</a>
+                    <a href="#" class="py-1">Women</a>
+                    <a href="#" class="py-1">Men</a>
+                    <a href="#" class="py-1">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. HERO BANNER -->
+    <section class="relative bg-[#d4bca4] h-[550px] flex items-center overflow-hidden">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 items-center h-full relative z-10">
+            <div class="text-white space-y-4">
+                <span class="text-sm uppercase tracking-widest font-semibold">New Collection</span>
+                <h1 class="text-5xl md:text-6xl font-bold leading-tight">FIND YOUR<br><span class="text-white">PERFECT</span></h1>
+                <p class="text-gray-100 max-w-sm">Explore the best trends for girls and women at SaleHub!</p>
+                <button class="bg-white text-black px-8 py-3 uppercase text-sm font-semibold tracking-wider hover:bg-black hover:text-white transition duration-300">Shop Now</button>
+            </div>
+        </div>
+        <img src="public/image/slideshow-1_f9506a0f-cd22-46e1-89e6-dfb216eda48b_1920x950.jpg" alt="Hero Denim" class="absolute inset-0 w-full h-full object-cover object-center mix-blend-multiply opacity-90">
+    </section>
+
+    <!-- 3. DENIM COLLECTION -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-2xl font-bold uppercase tracking-wider">Denim Collection</h2>
+            <div class="w-12 h-[2px] bg-black mx-auto my-3"></div>
+            <p class="text-gray-500 text-sm">Explore the best trends for girls and women at SaleHub! Clothes, shoes and cool accessories for a new season are available now at SaleHub online.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 relative group overflow-hidden h-[600px] bg-gray-100">
+                <img src="public/image/banner_1_1728x.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" alt="Denim Jackets">
+                <div class="absolute inset-0 bg-black/20 flex flex-col justify-end p-8 text-white">
+                    <span class="text-xs uppercase font-bold tracking-widest text-gray-300">Denim-Jacket</span>
+                    <h3 class="text-xl font-bold my-2 max-w-md">14 Denim-Jacket Outfits to Live in Now That It Is Fall</h3>
+                    <a href="#" class="underline text-sm font-semibold hover:text-gray-300">Shop the collection</a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-6">
+                <div class="relative group overflow-hidden h-[288px] bg-gray-100">
+                    <img src="public/image/bn-2_676a7adf-ea7b-4fa1-8848-8517abdc2793_900x.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" alt="Jeans">
+                    <div class="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 text-white">
+                        <h3 class="text-lg font-bold uppercase">Denim mini skirt</h3>
+                        <a href="#" class="underline text-xs font-semibold mt-1">Shop the collection</a>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden h-[288px] bg-gray-100">
+                    <img src="public/image/banner_3_900x.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" alt="Denim Skirts">
+                    <div class="absolute inset-0 bg-black/20 flex flex-col justify-end p-6 text-white">
+                        <h3 class="text-lg font-bold uppercase">Hooded Denim</h3>
+                        <p class="text-xs text-gray-300 mb-2">Subtitle from happy customers</p>
+                        <a href="#" class="underline text-xs font-semibold">Shop the collection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. WE LOVE SECTION -->
+    <section class="bg-white py-16 relative">
+        <div class="container mx-auto px-4">
+            <h2 class="text-center text-xl font-bold uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                We Love <i class="fa-solid fa-heart text-sm text-black"></i>
+            </h2>
+            <p class="text-center text-xs text-gray-400 uppercase tracking-wider mb-10">New arrivals</p>
+            
+            <button class="absolute left-4 top-[45%] z-10 w-10 h-10 bg-white border border-gray-100 shadow-md rounded-full flex items-center justify-center text-gray-400 hover:text-black hidden md:flex">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="absolute right-4 top-[45%] z-10 w-10 h-10 bg-white border border-gray-100 shadow-md rounded-full flex items-center justify-center text-gray-400 hover:text-black hidden md:flex">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <!-- Sản phẩm 1 -->
+                <div class="space-y-3 group text-left">
+                    <div class="overflow-hidden bg-gray-100 aspect-[3/4] w-full">
+                        <img src="public/image/1_35559729-bb4f-477a-afbb-d695451b9719_540x.jpg" class="w-full h-full object-cover" alt="Product 1">
+                    </div>
+                    <h4 class="text-xs font-semibold text-gray-800 line-clamp-1">Eco Aware organic cotton top</h4>
+                    <div class="flex items-center text-[10px] text-black space-x-0.5">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-xs font-bold text-gray-900">$39.00</p>
+                    <div class="flex items-center space-x-1.5 pt-1">
+                        <div class="w-5 h-5 rounded-full p-[1px] border border-black cursor-pointer"><div class="w-full h-full rounded-full bg-stone-300"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-amber-100"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-pink-200"></div></div>
+                        <span class="text-[10px] text-gray-400 pl-0.5">+3</span>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 2 -->
+                <div class="space-y-3 group text-left">
+                    <div class="overflow-hidden bg-gray-100 aspect-[3/4] w-full">
+                        <img src="public/image/1_bc70b428-ba01-434a-87f7-7fc276929722_540x.jpg" class="w-full h-full object-cover" alt="Product 2">
+                    </div>
+                    <h4 class="text-xs font-semibold text-gray-800 line-clamp-1">Eco aware long sleeve blouse</h4>
+                    <div class="flex items-center text-[10px] text-black space-x-0.5">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-xs font-bold text-gray-900">$47.00</p>
+                    <div class="flex items-center space-x-1.5 pt-1">
+                        <div class="w-5 h-5 rounded-full p-[1px] border border-black cursor-pointer"><div class="w-full h-full rounded-full bg-[#556b2f]"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-rose-300"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-amber-800"></div></div>
+                        <span class="text-[10px] text-gray-400 pl-0.5">+2</span>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 3 -->
+                <div class="space-y-3 group text-left">
+                    <div class="overflow-hidden bg-gray-100 aspect-[3/4] w-full">
+                        <img src="public/image/5_225b97d3-5005-45cf-b46e-3d7d6ea50d47_720x.jpg" class="w-full h-full object-cover" alt="Product 3">
+                    </div>
+                    <h4 class="text-xs font-semibold text-gray-800 line-clamp-2 min-h-[32px]">Oversized jacket with denim panels</h4>
+                    <div class="flex items-center text-[10px] text-black space-x-0.5">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs font-bold text-gray-900">$33.00</p>
+                    <div class="flex items-center space-x-1.5 pt-1">
+                        <div class="w-5 h-5 rounded-full p-[1px] border border-black cursor-pointer"><div class="w-full h-full rounded-full bg-blue-600"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-neutral-800"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-gray-200"></div></div>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 4 -->
+                <div class="space-y-3 group text-left">
+                    <div class="overflow-hidden bg-gray-100 aspect-[3/4] w-full">
+                        <img src="public/image/1_c0df3076-19c1-4535-a664-270cf6e05ab5_720x.jpg" class="w-full h-full object-cover" alt="Product 4">
+                    </div>
+                    <h4 class="text-xs font-semibold text-gray-800 line-clamp-2 min-h-[32px]">Levi's essential western denim shirt</h4>
+                    <div class="flex items-center text-[10px] text-black space-x-0.5">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-xs font-bold text-gray-900">$115.00</p>
+                    <div class="flex items-center space-x-1.5 pt-1">
+                        <div class="w-5 h-5 rounded-full p-[1px] border border-black cursor-pointer"><div class="w-full h-full rounded-full bg-[#6b8e23]"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-neutral-900"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-rose-200"></div></div>
+                        <span class="text-[10px] text-gray-400 pl-0.5">+2</span>
+                    </div>
+                </div>
+
+                <!-- Sản phẩm 5 -->
+                <div class="space-y-3 group text-left">
+                    <div class="overflow-hidden bg-gray-100 aspect-[3/4] w-full">
+                        <img src="public/image/1_8624266d-ffc8-44db-b030-5f62c62138d5_540x.jpg" class="w-full h-full object-cover" alt="Product 5">
+                    </div>
+                    <h4 class="text-xs font-semibold text-gray-800 line-clamp-1">Faux suede biker jacket</h4>
+                    <div class="flex items-center text-[10px] text-black space-x-0.5">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-regular fa-star"></i>
+                    </div>
+                    <p class="text-xs font-bold text-gray-900">$60.00</p>
+                    <div class="flex items-center space-x-1.5 pt-1">
+                        <div class="w-5 h-5 rounded-full p-[1px] border border-black cursor-pointer"><div class="w-full h-full rounded-full bg-amber-700"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-[#4b5320]"></div></div>
+                        <div class="w-5 h-5 rounded-full p-[1px] cursor-pointer"><div class="w-full h-full rounded-full bg-black"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 5. AUTUMN BANNER -->
+    <section class="relative h-[450px] flex items-center justify-center text-center text-white overflow-hidden">
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+            <source src="public/image/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="absolute inset-0 bg-black/45 z-10"></div>
+        <div class="relative z-20 space-y-4 px-4 max-w-3xl">
+            <span class="text-xs uppercase tracking-widest font-bold text-gray-300">Autumn is Coming</span>
+            <h2 class="text-3xl md:text-4xl font-bold uppercase tracking-wider leading-tight">The 11 Biggest Autumn/Winter 2021 Trends</h2>
+            <div class="text-[10px] text-gray-300 space-x-2 font-medium tracking-wide">
+                <span>BY VINOVATHEME</span>
+                <span>•</span>
+                <span>11 NOVEMBER 2021</span>
+            </div>
+            <div class="pt-2">
+                <button class="bg-white text-black px-7 py-3 text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition duration-300 rounded-sm">
+                    View More
+                </button>
+            </div>
+       </div>
+    </section>
+
+    <!-- 6. FEATURED PRODUCT -->
+    <section class="container mx-auto px-4 py-16 max-w-5xl">
+        <h2 class="text-center text-xl font-bold uppercase tracking-widest mb-12">Featured Product</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div class="space-y-4">
+                <div class="bg-gray-100 aspect-[3/4] w-full overflow-hidden">
+                    <img id="main-prod-img" src="public/image/1_c0df3076-19c1-4535-a664-270cf6e05ab5_720x.jpg" class="w-full h-full object-cover rounded-sm" alt="Levi's shirt">
+                </div>
+                <div class="flex justify-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-black cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                    <span class="w-2 h-2 rounded-full bg-gray-300 cursor-pointer"></span>
+                </div>
+            </div>
+
+            <div class="space-y-5">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 tracking-wide">Levi's essential western denim shirt</h3>
+                    <div class="flex items-center text-xs text-black space-x-0.5 mt-2">
+                        <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-sm font-bold text-gray-900 mt-3">$120.00</p>
+                </div>
+                
+                <div>
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-gray-500 block mb-2">Color: <span class="text-gray-900 font-normal">darkolivegreen</span></span>
+                    <div class="flex space-x-2">
+                        <button class="w-6 h-6 rounded-full p-[1px] border border-black focus:outline-none"><div class="w-full h-full rounded-full bg-[#556b2f]"></div></button>
+                        <button class="w-6 h-6 rounded-full p-[1px] focus:outline-none"><div class="w-full h-full rounded-full bg-black"></div></button>
+                        <button class="w-6 h-6 rounded-full p-[1px] focus:outline-none"><div class="w-full h-full rounded-full bg-rose-400"></div></button>
+                        <button class="w-6 h-6 rounded-full p-[1px] border border-gray-200 focus:outline-none"><div class="w-full h-full rounded-full bg-white"></div></button>
+                        <button class="w-6 h-6 rounded-full p-[1px] focus:outline-none"><div class="w-full h-full rounded-full bg-indigo-900"></div></button>
+                    </div>
+                </div>
+
+                <div>
+                    <span class="text-[10px] uppercase tracking-wider font-bold text-gray-500 block mb-2">Size: <span class="text-gray-900 font-normal">XS</span></span>
+                    <div class="flex space-x-2">
+                        <button class="border border-black bg-black text-white w-8 h-8 flex items-center justify-center text-[10px] font-bold">XS</button>
+                        <button class="border border-gray-300 text-gray-900 w-8 h-8 flex items-center justify-center text-[10px] font-medium hover:border-black">S</button>
+                        <button class="border border-gray-100 text-gray-300 w-8 h-8 flex items-center justify-center text-[10px] font-medium relative cursor-not-allowed">M <span class="absolute inset-0 flex items-center justify-center text-gray-200"><i class="fa-solid fa-envelope text-[10px]"></i></span></button>
+                        <button class="border border-gray-300 text-gray-900 w-8 h-8 flex items-center justify-center text-[10px] font-medium hover:border-black">L</button>
+                        <button class="border border-gray-100 text-gray-300 w-8 h-8 flex items-center justify-center text-[10px] font-medium relative cursor-not-allowed">XL <span class="absolute inset-0 flex items-center justify-center text-gray-200"><i class="fa-solid fa-envelope text-[10px]"></i></span></button>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-2 max-w-sm">
+                    <button class="w-full bg-[#e5e5e5] text-black font-semibold uppercase text-xs py-3 tracking-widest hover:bg-black hover:text-white transition duration-300">
+                        Add to bag
+                    </button>
+                    <button class="w-full bg-[#ffc439] text-sm py-2.5 rounded-sm font-medium text-blue-900 flex items-center justify-center gap-1 hover:bg-[#f4b627] transition">
+                        <span class="italic text-gray-700 text-xs font-semibold">Pay with</span>
+                        <span class="font-extrabold italic text-blue-800 tracking-tighter text-sm">Pay<span class="text-cyan-600">Pal</span></span>
+                    </button>
+                </div>
+
+                <div class="pt-1">
+                    <a href="#" class="text-[10px] uppercase tracking-wider font-bold text-gray-800 flex items-center gap-1.5 hover:underline">
+                        <i class="fa-solid fa-ruler-horizontal text-xs"></i> Size Chart
+                    </a>
+                </div>
+
+                <p class="text-xs text-gray-500 leading-relaxed pt-2">
+                    Steele's Lena Dress features a smocked bust, off the shoulder sleeves with eyelet design, and mini cut skirt with raw hem.
+                </p>
+
+                <ul class="text-xs text-gray-500 space-y-2 pt-4 border-t border-gray-100 list-disc list-inside pl-1">
+                    <li>MACHINE WASH AT MAX.TEMP. 30° C - NORMAL PROCESS</li>
+                    <li>DO NOT BLEACH</li>
+                    <li>DO NOT TUMBLE DRY</li>
+                    <li>IRON AT MAX. TEMP. OF 110° C WITHOUT STEAM</li>
+                    <li>DO NOT DRY CLEAN</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SHOP THE LOOK -->
+    <section class="bg-stone-100 py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10 max-w-xl mx-auto">
+                <h2 class="text-xl font-bold uppercase tracking-widest">Shop The Looks</h2>
+                <p class="text-xs text-gray-500 mt-2">Our latest endeavour features designs from around the world with materials so comfortable you won't want to wear anything else every again.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="bg-white"><img src="public/image/lb-1_88ecbdcc-c1c6-47af-9cb5-1f21ebae7c4c_720x.png" class="w-full h-80 object-cover" alt="Look 1"></div>
+                <div class="bg-white"><img src="public/image/blog-2_900x.png" class="w-full h-80 object-cover" alt="Look 2"></div>
+                <div class="bg-white"><img src="public/image/lb-3_243a2a47-8869-47c2-a1b7-ea9163d96e52_720x.png" class="w-full h-80 object-cover" alt="Look 3"></div>
+                <div class="bg-white"><img src="public/image/lb-4_d1d516ae-775a-453a-a97b-84c9e80f69cd_720x.png" class="w-full h-80 object-cover" alt="Look 4"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white"><img src="public/image/lb-5_fbd8fa3f-d8a8-4ef1-a023-c348c802ad38_720x.png" class="w-full h-80 object-cover" alt="Look 5"></div>
+                <div class="bg-white"><img src="public/image/lb-6_a88c6dc9-2f7b-4020-96b1-f01cd6593323_720x.png" class="w-full h-80 object-cover" alt="Look 6"></div>
+                <div class="bg-white"><img src="public/image/lb-7_177acd91-0dbb-4e63-8fe7-2311d1c193e8_720x.png" class="w-full h-80 object-cover" alt="Look 7"></div>
+                <div class="bg-white"><img src="public/image/img-12-1_1920x1920.jpg" class="w-full h-80 object-cover" alt="Look 8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FROM OUR BLOG -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-center text-xl font-bold uppercase tracking-widest mb-12">From Our Blog</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-start">
+            <!-- Blog Card 1 -->
+            <div class="relative">
+                <div class="h-64 bg-gray-100 overflow-hidden">
+                    <img src="public/image/blog-1_900x.png" class="w-full h-full object-cover" alt="Blog 1">
+                </div>
+                <div class="bg-white mx-4 p-5 -mt-16 relative z-10 space-y-4 text-left">
+                    <h4 class="font-bold text-sm text-gray-950 tracking-wide leading-snug">5 Sweet Outfit Ideas You'll Wear Well Beyond Valentine's Day</h4>
+                    <p class="text-[11px] text-gray-400 leading-relaxed font-normal">Valentine's Day 2021 has no choice but to unfold rather differently than usual, so we already know it will be one to remember. ...</p>
+                    <div class="w-6 h-[1px] bg-gray-600"></div>
+                    <div class="space-y-1 text-[9px] text-gray-500 uppercase font-bold tracking-wider pt-1">
+                        <div class="flex items-center gap-1.5"><i class="fa-regular fa-user text-[10px]"></i> BY VINOVA THEME</div>
+                        <div class="flex items-center gap-1.5 text-gray-400 font-medium"><i class="fa-regular fa-calendar text-[10px]"></i> 03 MAR 2021</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="relative">
+                <div class="h-64 bg-gray-100 overflow-hidden">
+                    <img src="public/image/blog-2_900x.png" class="w-full h-full object-cover" alt="Blog 2">
+                </div>
+                <div class="bg-white mx-4 p-5 -mt-16 relative z-10 space-y-4 text-left">
+                    <h4 class="font-bold text-sm text-gray-950 tracking-wide leading-snug">How To Be "Good With Money" According To 4 Female Financial Experts</h4>
+                    <p class="text-[11px] text-gray-400 leading-relaxed font-normal">Valentine's Day 2021 has no choice but to unfold rather differently than usual, so we already know it will be one to remember. ...</p>
+                    <div class="w-6 h-[1px] bg-gray-600"></div>
+                    <div class="space-y-1 text-[9px] text-gray-500 uppercase font-bold tracking-wider pt-1">
+                        <div class="flex items-center gap-1.5"><i class="fa-regular fa-user text-[10px]"></i> BY VINOVA THEME</div>
+                        <div class="flex items-center gap-1.5 text-gray-400 font-medium"><i class="fa-regular fa-calendar text-[10px]"></i> 03 MAR 2021</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="relative">
+                <div class="h-64 bg-gray-100 overflow-hidden">
+                    <img src="public/image/blog-3_900x.png" class="w-full h-full object-cover" alt="Blog 3">
+                </div>
+                <div class="bg-white mx-4 p-5 -mt-16 relative z-10 space-y-4 text-left">
+                    <h4 class="font-bold text-sm text-gray-950 tracking-wide leading-snug">This Scandi Influencer's Shoe Collaboration Is The Gift That Keeps On Giving</h4>
+                    <p class="text-[11px] text-gray-400 leading-relaxed font-normal">Valentine's Day 2021 has no choice but to unfold rather differently than usual, so we already know it will be one to remember. ...</p>
+                    <div class="w-6 h-[1px] bg-gray-600"></div>
+                    <div class="space-y-1 text-[9px] text-gray-500 uppercase font-bold tracking-wider pt-1">
+                        <div class="flex items-center gap-1.5"><i class="fa-regular fa-user text-[10px]"></i> BY VINOVA THEME</div>
+                        <div class="flex items-center gap-1.5 text-gray-400 font-medium"><i class="fa-regular fa-calendar text-[10px]"></i> 03 MAR 2021</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Blog Card 4 -->
+            <div class="relative">
+                <div class="h-64 bg-gray-100 overflow-hidden">
+                    <img src="public/image/blog-4_900x.png" class="w-full h-full object-cover" alt="Blog 4">
+                </div>
+                <div class="bg-white mx-4 p-5 -mt-16 relative z-10 space-y-4 text-left">
+                    <h4 class="font-bold text-sm text-gray-950 tracking-wide leading-snug">5 Sweet Outfit Ideas You'll Wear Well Beyond Valentine's Day</h4>
+                    <p class="text-[11px] text-gray-400 leading-relaxed font-normal">Valentine's Day 2021 has no choice but to unfold rather differently than usual, so we already know it will be one to remember. ...</p>
+                    <div class="w-6 h-[1px] bg-gray-600"></div>
+                    <div class="space-y-1 text-[9px] text-gray-500 uppercase font-bold tracking-wider pt-1">
+                        <div class="flex items-center gap-1.5"><i class="fa-regular fa-user text-[10px]"></i> BY VINOVA THEME</div>
+                        <div class="flex items-center gap-1.5 text-gray-400 font-medium"><i class="fa-regular fa-calendar text-[10px]"></i> 03 MAR 2021</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. ICON POLICY -->
+    <div class="bg-[#efece7] border-b border-stone-300/60 py-8">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-left text-gray-700">
+            <div class="flex items-start space-x-3.5 max-w-sm mx-auto md:mx-0">
+                <i class="fa-solid fa-truck-fast text-2xl text-gray-800 pt-0.5 font-light"></i>
+                <div class="text-xs leading-normal">
+                    <span class="font-bold text-gray-900">Free Shipping</span> on all US order or order above $99
+                </div>
+            </div>
+            
+            <div class="flex items-start space-x-3.5 max-w-sm mx-auto md:mx-0">
+                <i class="fa-solid fa-phone-volume text-2xl text-gray-800 pt-0.5 font-light"></i>
+                <div class="text-xs leading-normal">
+                    <span class="font-bold text-gray-900">Support 24/7 :</span> Contact us 24 hours a day, 7 days a week
+                </div>
+            </div>
+            
+            <div class="flex items-start space-x-3.5 max-w-sm mx-auto md:mx-0">
+                <i class="fa-solid fa-arrows-left-right text-2xl text-gray-800 pt-0.5 font-light"></i>
+                <div class="text-xs leading-normal">
+                    <span class="font-bold text-gray-900">30 Days Return :</span> Simply return it within 30 days for an exchange.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. FOOTER SECTION -->
+    <footer class="bg-[#efece7] text-gray-600 text-xs py-14">
+        <div class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-14 text-left">
+            <div class="space-y-5">
+                <a href="#" class="text-2xl font-bold tracking-tight text-black block">Salehub</a>
+                <div class="space-y-2.5 text-gray-600 font-medium">
+                    <p>We’re available by phone +123-456-789</p>
+                    <p>info@example.com</p>
+                    <p>Monday till Friday 10 to 6 EST</p>
+                </div>
+                <div class="pt-2">
+                    <img src="public/image/paypal_240x.png" alt="Payment Methods" class="h-6 w-auto object-contain">
+                </div>
+            </div>
+    
+            <div class="space-y-3">
+                <h5 class="text-black font-bold text-sm tracking-wide">About Us</h5>
+                <ul class="space-y-3 text-gray-600 font-medium">
+                    <li><a href="#" class="hover:text-black">About Us</a></li>
+                    <li><a href="#" class="hover:text-black">Contact us</a></li>
+                    <li><a href="#" class="hover:text-black">Factories</a></li>
+                    <li><a href="#" class="hover:text-black">Careers</a></li>
+                    <li><a href="#" class="hover:text-black">Help and advice</a></li>
+                    <li><a href="#" class="hover:text-black">Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-black">Terms and conditions</a></li>
+                    <li><a href="#" class="hover:text-black">Refund Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h5 class="text-black font-bold text-sm tracking-wide">Our Shop</h5>
+                <ul class="space-y-3 text-gray-600 font-medium">
+                    <li><a href="#" class="hover:text-black">New Arrivals</a></li>
+                    <li><a href="#" class="hover:text-black">Top Trending</a></li>
+                    <li><a href="#" class="hover:text-black">Autumn Collection</a></li>
+                    <li><a href="#" class="hover:text-black">Back in Stock</a></li>
+                    <li><a href="#" class="hover:text-black">Bikini Tops</a></li>
+                    <li><a href="#" class="hover:text-black">Bikini Bottoms</a></li>
+                    <li><a href="#" class="hover:text-black">Swimwear</a></li>
+                    <li><a href="#" class="hover:text-black">Denim Collection</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-4">
+                <h5 class="text-black font-bold text-sm tracking-wide">Newsletter</h5>
+                <p class="text-gray-500 leading-relaxed font-medium">Receive our weekly newsletter.<br>For dietary content, fashion insider and the best offers.</p>
+                <div class="flex max-w-xs border border-gray-300 bg-white">
+                    <input type="email" placeholder="Email address" class="bg-transparent p-2.5 px-3 text-gray-800 w-full focus:outline-none text-xs">
+                    <button class="bg-[#1c1c1c] text-white px-5 font-bold uppercase tracking-wider text-xs hover:bg-black transition-colors">Join</button>
+                </div>
+
+                <div class="flex space-x-4 text-sm text-gray-800 pt-3">
+                    <a href="#" class="hover:text-gray-500 transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-gray-500 transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-gray-500 transition-colors"><i class="fa-brands fa-pinterest-p"></i></a>
+                    <a href="#" class="hover:text-gray-500 transition-colors"><i class="fa-brands fa-vimeo-v"></i></a>
+                    <a href="#" class="hover:text-gray-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Bar Info -->
+        <div class="border-t border-stone-300/60 pt-6 container mx-auto px-4 flex flex-col md:flex-row justify-between text-gray-500 font-medium items-center gap-4">
+            <div>Copyright © 2026 Vinovathemes. All rights reserved.</div>
+            <div class="flex items-center space-x-4">
+                <div class="relative inline-block text-left text-gray-900 font-bold mr-2 cursor-pointer group">
+                    <span class="flex items-center gap-1 text-[11px]">USD <i class="fa-solid fa-chevron-down text-[9px] text-gray-600"></i></span>
+                </div>
+                <span class="text-stone-300">|</span>
+                <a href="#" class="hover:text-black">Privacy Policy</a>
+                <span class="text-stone-300">|</span>
+                <a href="#" class="hover:text-black">Terms of Use</a>
+                <span class="text-stone-300">|</span>
+                <a href="#" class="hover:text-black">FAQs</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Thanh Điều Hướng Đáy (Mobile Bottom Navigation) -->
+    <div class="fixed bottom-0 inset-x-0 bg-white border-t border-gray-200 py-2 px-6 flex justify-between items-center text-gray-500 z-40 md:hidden shadow-lg">
+        <a href="#" class="flex flex-col items-center space-y-0.5 text-black">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px]">Home</span>
+        </a>
+        <a href="#" class="flex flex-col items-center space-y-0.5">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            <span class="text-[10px]">Search</span>
+        </a>
+        <a href="#" class="flex flex-col items-center space-y-0.5 relative">
+            <i class="fa-solid fa-bag-shopping text-lg"></i>
+            <span class="text-[10px]">Cart</span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT ĐIỀU KHIỂN TẤT CẢ TÍNH NĂNG -->
+    <script>
+        // --- 1. ĐÓNG MỞ HAMBURGER MENU MOBILE ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-drawer-btn');
+        const drawer = document.getElementById('mobile-drawer');
+        const drawerContent = document.getElementById('drawer-content');
+
+        if (menuBtn && closeBtn) {
+            menuBtn.addEventListener('click', () => {
+                drawer.classList.remove('pointer-events-none', 'opacity-0');
+                drawerContent.classList.remove('-translate-x-full');
+            });
+            closeBtn.addEventListener('click', () => {
+                drawer.classList.add('pointer-events-none', 'opacity-0');
+                drawerContent.classList.add('-translate-x-full');
+            });
+        }
+
+        // --- 2. XỬ LÝ NÚT SEARCH THÔNG MINH (BẤM VÀO HIỆN Ô INPUT) ---
+        const searchTriggerBtn = document.getElementById('search-trigger-btn');
+        const searchInput = document.getElementById('search-input');
+        const searchWrapper = document.getElementById('search-wrapper');
+
+        if (searchTriggerBtn && searchInput) {
+            // Khi người dùng bấm vào nút Search cũ
+            searchTriggerBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Ngăn sự kiện click lan ra ngoài
+                
+                // Mở rộng ô Input và tạo màu nền xám nhẹ xung quanh
+                searchInput.classList.remove('w-0', 'opacity-0', 'px-0');
+                searchInput.classList.add('w-28', 'sm:w-40', 'md:w-48', 'opacity-100', 'px-2.5');
+                searchWrapper.classList.add('bg-gray-100', 'rounded-full', 'p-1');
+                
+                searchInput.focus(); // Tự động đưa con trỏ chuột vào ô nhập
+            });
+
+            // Khi người dùng gõ từ khóa và ấn nút ENTER
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    const query = searchInput.value.trim();
+                    if (query) {
+                        alert('Hệ thống đang tìm kiếm từ khóa: ' + query);
+                    }
+                }
+            });
+
+            // Khi người dùng bấm click ra ngoài vùng tìm kiếm, tự động thu nhỏ lại như cũ nếu không có chữ
+            document.addEventListener('click', (e) => {
+                if (!searchWrapper.contains(e.target) && searchInput.value.trim() === "") {
+                    searchInput.classList.add('w-0', 'opacity-0', 'px-0');
+                    searchInput.classList.remove('w-28', 'sm:w-40', 'md:w-48', 'opacity-100', 'px-2.5');
+                    searchWrapper.classList.remove('bg-gray-100', 'rounded-full', 'p-1');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
